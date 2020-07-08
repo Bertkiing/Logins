@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GoogleGame</string>
+    <string name="facebook_app_id">272632007164900</string>
+    <string name="fb_login_protocol_scheme">fb272632007164900</string>
+</resources>
