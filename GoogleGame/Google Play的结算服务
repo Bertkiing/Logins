@@ -1,0 +1,20 @@
+### Google Play的结算服务
+
+[Google Play 结算服务文档](https://developer.android.com/google/play/billing/billing_overview)
+
+
+#### 主要步骤：
+ 1. 将Google Play结算服务添加到应用
+ 
+ 2. 连接到Google Play服务
+ 
+ 3. 查询应用内的商品详情
+ 
+ 
+ 
+ ##### 商品的分类：
+ 1. 一次性商品(SkuType.INAPP)
+    a. 非消耗型一次性商品(永久有效)
+    b. 消耗型一次性商品(暂时有效) 
+ 2. 订阅类商品(SkuType.SUBS)
+ > PS： 订阅类型不能是消耗型商品
