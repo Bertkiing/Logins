@@ -30,6 +30,8 @@ class AnalyticsActivity : AppCompatActivity() {
 
         firebaseAnalytics = Firebase.analytics
 
+        firebaseAnalytics.setUserProperty("favorite_cartoon","龙珠")
+
 
         btn_record_image?.setOnClickListener {
             recordImageView()

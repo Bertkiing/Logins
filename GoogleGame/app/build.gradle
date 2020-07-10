@@ -16,6 +16,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resConfigs "en" // And any other languages you support
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -23,6 +26,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -49,4 +53,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.4.4'
     implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
+
+    //Cloud Firestore 云数据库
+    implementation 'com.google.firebase:firebase-firestore:21.5.0'
+
+
+    // FirebaseUI 登录授权库
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
+    implementation 'com.facebook.android:facebook-android-sdk:7.1.0'
+
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
 }

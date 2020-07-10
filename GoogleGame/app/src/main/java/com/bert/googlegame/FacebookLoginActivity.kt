@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.bert.googlegame.utils.Utils
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -183,7 +184,6 @@ class FacebookLoginActivity : AppCompatActivity() {
                         // 刷新失败
                     }
                 })
-
 
 
             }

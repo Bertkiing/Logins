@@ -30,11 +30,24 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
+
+    <Button
+            android:id="@+id/btn_firebase_ui_auth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Firebase授权服务相关"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_google_analytics"
+            />
+
     <Button
             android:id="@+id/btn_google_analytics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Firebase 统计"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btn_sign_in"
@@ -46,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Facebook登录"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btn_login_out"

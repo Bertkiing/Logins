@@ -10,6 +10,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
+import com.bert.googlegame.firebases.FirebaseLoginActivity
+import com.bert.googlegame.utils.LoginUtil
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -63,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         btn_google_analytics?.setOnClickListener {
             startActivity(Intent(this,AnalyticsActivity::class.java))
 
+        }
+
+        btn_firebase_ui_auth?.setOnClickListener {
+            startActivity(Intent(this,FirebaseLoginActivity::class.java))
         }
 
     }

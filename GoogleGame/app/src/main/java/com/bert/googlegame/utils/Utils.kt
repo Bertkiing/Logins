@@ -1,4 +1,4 @@
-package com.bert.googlegame
+package com.bert.googlegame.utils
 
 import android.content.Context
 import android.widget.Toast

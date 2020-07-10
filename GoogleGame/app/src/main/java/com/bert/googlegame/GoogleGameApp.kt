@@ -1,6 +1,6 @@
 package com.bert.googlegame
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 
 /**
  *
@@ -12,7 +12,7 @@ import android.app.Application
  * @Version: 1.0
  * @Description:
  */
-class GoogleGameApp : Application() {
+class GoogleGameApp : MultiDexApplication() {
     val TAG = GoogleGameApp::class.java.simpleName
 
     override fun onCreate() {
