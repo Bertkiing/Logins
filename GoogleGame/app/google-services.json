@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "272381233074",
+    "firebase_url": "https://phonic-network-282506.firebaseio.com",
+    "project_id": "phonic-network-282506",
+    "storage_bucket": "phonic-network-282506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272381233074:android:1254071b7b535891ea86ab",
+        "android_client_info": {
+          "package_name": "com.bert.googlegame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272381233074-vc3fc3qui298kdbc74vke87bs56je8c0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bert.googlegame",
+            "certificate_hash": "dd0d73622df38aa75447449cbde6f5801a14b42b"
+          }
+        },
+        {
+          "client_id": "272381233074-409kkk7of4hj3g34eu97tj3k79fqmg0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyFCcKHEJP8JLrQNmwlYafSiUTDP03gMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272381233074-409kkk7of4hj3g34eu97tj3k79fqmg0b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

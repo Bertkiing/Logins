@@ -60,6 +60,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,FacebookLoginActivity::class.java))
         }
 
+        btn_google_analytics?.setOnClickListener {
+            startActivity(Intent(this,AnalyticsActivity::class.java))
+
+        }
+
     }
 
 

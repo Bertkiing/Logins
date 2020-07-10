@@ -1,8 +1,14 @@
 package com.bert.googlegame
 
 import android.app.Activity
+import android.text.TextUtils
 import android.util.Log
 import com.android.billingclient.api.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.lang.IllegalArgumentException
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *
@@ -158,7 +164,7 @@ object GoogleBillingUtil {
      * @param skuId  商品 ID (skuId)
      * @param skuType 商品类型（SkuType.INAPP - 针对一次性商品，或者 SkuType.SUBS - 针对订阅
      */
-    private fun purchase(activity: Activity,skuId: String, skuType: String) {
+    private fun purchase(activity: Activity, skuId: String, skuType: String) {
         if (!this::billingClient.isInitialized) {
             // 购买失败
             Log.d(TAG, "与 Google Play 的连接失败: billingClient 未初始化")
@@ -178,13 +184,13 @@ object GoogleBillingUtil {
             billingClient.querySkuDetailsAsync(params, object : SkuDetailsResponseListener {
                 override fun onSkuDetailsResponse(result: BillingResult?, list: MutableList<SkuDetails>?) {
 
-                    when(result?.responseCode){
+                    when (result?.responseCode) {
                         // 购买成功
                         BillingClient.BillingResponseCode.OK -> {
                             if (!list.isNullOrEmpty()) {
                                 val flowParams = BillingFlowParams.newBuilder().setSkuDetails(list[0]).build()
                                 // 当您调用 launchBillingFlow() 方法时，系统会显示 Google Play 购买屏幕
-                                billingClient.launchBillingFlow(activity,flowParams)
+                                billingClient.launchBillingFlow(activity, flowParams)
                             }
                         }
 
@@ -231,5 +237,133 @@ object GoogleBillingUtil {
             runnable.run()
         }
     }
+
+
+    /***
+     * 一次性商品专有功能：消耗型一次性商品
+     * https://developer.android.com/google/play/billing/billing_onetime
+     * ************/
+
+
+    /**
+     * 单个消耗商品
+     * @param purchaseToken 购买令牌，它是一个唯一标识符，表示用户已购买的单件应用内商品
+     */
+    private fun consumeAsyn(purchaseToken: String?) {
+        if (!this::billingClient.isInitialized) {
+            return
+        }
+
+        if (purchaseToken.isNullOrEmpty()) {
+            throw IllegalArgumentException("purchaseToken is null or empty")
+        }
+
+        val consumeParams = ConsumeParams.newBuilder().setPurchaseToken(purchaseToken).build()
+        billingClient.consumeAsync(consumeParams, MyConsumeResponseListener())
+
+    }
+
+    /**
+     * 多个消耗商品
+     * @sample sku 商品ID
+     */
+    private fun consumAsyn(vararg sku: String) {
+        if (!this::billingClient.isInitialized) {
+            return
+        }
+
+        val skus = Arrays.asList(sku)
+
+
+        val purchasesResult: Purchase.PurchasesResult = billingClient.queryPurchases(BillingClient.SkuType.INAPP)
+        if (purchasesResult?.responseCode == BillingClient.BillingResponseCode.OK) {
+
+        } else {
+
+        }
+    }
+
+
+    /**
+     * 一次性消耗商品的回调
+     *
+     * Google Play 结算服务库会在消耗操作完成时调用该方法。
+     *
+     * purchaseToken:购买令牌，它是一个唯一标识符，表示用户已购买的单件应用内商品
+     *
+     */
+    class MyConsumeResponseListener : ConsumeResponseListener {
+        override fun onConsumeResponse(billingResult: BillingResult?, purchaseToken: String?) {
+            if (billingResult?.responseCode == BillingClient.BillingResponseCode.OK) {
+                // 购买消耗商品成功
+            } else {
+                // 购买消耗商品成功
+            }
+        }
+
+    }
+
+
+    /***
+     *  查询服务
+     * 1.查询缓存的购买交易(queryPurchases())
+     * 2.查询最近的购买交易(queryPurchaseHistoryAsync())
+     */
+
+
+    /**
+     * 本地查询(推荐使用，实时性高)
+     *
+     * @param skuType 购买类型(SkuType.INAPP 或 SkuType.SUBS)
+     *
+     * queryPurchases() 方法会使用 Google Play 商店应用的缓存，而不会发起网络请求
+     * 至少查询2次(应用启动& onResume)
+     */
+    fun queryPurchase(skuType: String = BillingClient.SkuType.INAPP): List<Purchase> {
+        if (!this::billingClient.isInitialized) {
+            return emptyList()
+        }
+
+        val purchasesResult = billingClient.queryPurchases(skuType)
+        return if (purchasesResult.responseCode == BillingClient.BillingResponseCode.OK) {
+            purchasesResult.purchasesList
+        } else {
+            emptyList()
+        }
+
+    }
+
+    /**
+     * 异步网络历史查询(已过期，已取消或所购商品已被使用)
+     * @param skuType
+     */
+     fun queryPurchaseHistory(skuType: String = BillingClient.SkuType.INAPP) {
+        if (!this::billingClient.isInitialized) {
+            return
+        }
+
+         Runnable {
+             billingClient.queryPurchaseHistoryAsync(skuType,MyPurchaseHistoryResponseListener())
+         }.run()
+
+    }
+
+
+    /**
+     * 异步网络历史查询回调
+     */
+    class MyPurchaseHistoryResponseListener : PurchaseHistoryResponseListener {
+        override fun onPurchaseHistoryResponse(
+            billingResult: BillingResult?,
+            purchaseHistoryRecordList: MutableList<PurchaseHistoryRecord>?
+        ) {
+            if (billingResult?.responseCode == BillingClient.BillingResponseCode.OK && !purchaseHistoryRecordList.isNullOrEmpty()) {
+                // 查询成功
+            } else {
+                // 查询失败
+            }
+        }
+    }
+
 
 }
