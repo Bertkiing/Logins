@@ -19,6 +19,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".CoroutineActivity">
+        </activity>
+        <activity android:name=".BaseActivity">
+        </activity>
+        <activity android:name=".firebases.RecycleADActivity">
+        </activity>
+        <activity android:name=".firebases.GoogleADActivity">
+        </activity>
+
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-4451195260777809~2946630995"/>
+
+        <activity android:name=".firebases.DatabaseActivity">
+        </activity>
         <activity android:name=".firebases.FirebaseLoginActivity">
         </activity>
         <activity android:name=".AnalyticsActivity">

@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task
 /**
  * https://developers.google.com/identity/sign-in/android/sign-in
  * 添加Google登录工作流
+ *
+ * https://github.com/firebase/quickstart-android
  */
 class MainActivity : AppCompatActivity() {
 

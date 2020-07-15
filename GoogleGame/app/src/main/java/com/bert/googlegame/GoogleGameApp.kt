@@ -1,6 +1,7 @@
 package com.bert.googlegame
 
 import androidx.multidex.MultiDexApplication
+import com.google.android.gms.ads.MobileAds
 
 /**
  *
@@ -13,10 +14,14 @@ import androidx.multidex.MultiDexApplication
  * @Description:
  */
 class GoogleGameApp : MultiDexApplication() {
-    val TAG = GoogleGameApp::class.java.simpleName
+
+    companion object{
+        const val TAG = "GoogleGameApp"
+    }
 
     override fun onCreate() {
         super.onCreate()
-
+        // 初始化 SDK
+//        MobileAds.initialize(this,"ca-app-pub-4451195260777809~2946630995")
     }
 }

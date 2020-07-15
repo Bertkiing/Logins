@@ -2,4 +2,15 @@
     <string name="app_name">GoogleGame</string>
     <string name="facebook_app_id" translatable="false">272632007164900</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb272632007164900</string>
+
+    <!--横幅广告-->
+    <string name="test_banner_ad" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad" translatable="false">ca-app-pub-4451195260777809/2343447023</string>
+    <!--插页式广告(全屏广告)-->
+    <string name="test_insert_ad" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="insert_ad" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <!--原生广告-->
+    <string name="test_native_ad" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_ad" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+
 </resources>

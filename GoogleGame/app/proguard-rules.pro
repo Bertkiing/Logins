@@ -22,3 +22,9 @@
 
 
 -keep class com.android.vending.billing.**
+-keepattributes Signature
+-com.google.firebase:firebase-firestore:21.5.0
+-com.google.firebase:firebase-inappmessaging:19.1.0
+-com.google.firebase:firebase-inappmessaging-display:19.1.0
+-com.google.firebase:firebase-config:19.2.0
+-com.google.firebase:firebase-abt:19.1.0

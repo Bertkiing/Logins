@@ -47,6 +47,15 @@ class FirebaseLoginActivity : AppCompatActivity() {
             LoginUtil.triggerSignIn(this)
         }
 
+
+        btn_db?.setOnClickListener {
+            startActivity(Intent(this,DatabaseActivity::class.java))
+        }
+
+        btn_ad?.setOnClickListener {
+            startActivity(Intent(this,GoogleADActivity::class.java))
+        }
+
     }
 
 
@@ -55,10 +64,12 @@ class FirebaseLoginActivity : AppCompatActivity() {
             btn_login_out?.visibility = View.GONE
             tv_login_state?.text = "未登录"
             tv_login_state?.isEnabled = true
+            btn_db?.visibility = View.GONE
         }else{
             btn_login_out?.visibility = View.VISIBLE
             tv_login_state?.text = "登录成功"
             tv_login_state?.isEnabled = false
+            btn_db?.visibility = View.VISIBLE
             Log.d(TAG, "CURRENT user: " + user.email + " " + user.displayName)
         }
     }
